@@ -1,10 +1,9 @@
-import axios from 'axios'
-import { config } from 'dotenv'
-config()
+import axios from 'axios';
+import envreader from '../../services/env-reader'
 
 export default (req, res) => {
     res.setHeader('Content-Type', 'application/graphql')
-    const api_endpoint = process.env.GRAPHQL_ENDPOINT
+    const api_endpoint = envreader.GRAPHQL_ENDPOINT
     axios({
         method: 'post',
         url: api_endpoint,

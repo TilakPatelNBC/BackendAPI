@@ -1,16 +1,15 @@
 import axios from 'axios'
-import {config} from 'dotenv'
-config()
+import envreader from '../../services/env-reader'
 
 export default (req, res) => {
     res.setHeader('Content-Type', 'application/json')
-    const api_endpoint = process.env.YOUTUBE_API_ENDPOINT
-    const api_key = process.env.YOUTUBE_API_KEY
-    const max_results = req.body.max_results
+    const api_endpoint = envreader.YOUTUBE_API_ENDPOINT
+    const api_key = envreader.YOUTUBE_API_KEY
+    const max_results = envreader.max_results
     axios.get(api_endpoint, {
         params: {
             part: 'snippet',
-            channelId: process.env.CNBC_YOUTUBE_CHANNEL_ID,
+            channelId: envreader.CNBC_YOUTUBE_CHANNEL_ID,
             maxResults: max_results || 10,
             order: 'date',
             key: api_key
