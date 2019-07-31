@@ -1,14 +1,17 @@
 import axios from 'axios'
+import {config} from 'dotenv'
+config()
 
-export default res => {
+export default (req, res) => {
     res.setHeader('Content-Type', 'application/json')
-    const api_endpoint = 'https://www.googleapis.com/youtube/v3/search'
-    const api_key = 'AIzaSyDLgcYIKMiMVM2HM3liPbzrJyJTnVUq1oY'
+    const api_endpoint = process.env.YOUTUBE_API_ENDPOINT
+    const api_key = process.env.YOUTUBE_API_KEY
+    const max_results = req.body.max_results
     axios.get(api_endpoint, {
         params: {
             part: 'snippet',
-            channelId: 'UCvJJ_dzjViJCoLf5uKUTwoA',
-            maxResults: 5,
+            channelId: process.env.CNBC_YOUTUBE_CHANNEL_ID,
+            maxResults: max_results || 10,
             order: 'date',
             key: api_key
         }
