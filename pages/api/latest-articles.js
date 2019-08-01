@@ -1,5 +1,5 @@
 import axios from 'axios';
-import envreader from '../../services/env-reader'
+import envreader from '../../services/envReader'
 
 export default (req, res) => {
     res.setHeader('Content-Type', 'application/graphql')
