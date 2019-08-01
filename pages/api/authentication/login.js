@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 import envreader from '../../../services/envReader'
 import {MongoClient} from 'mongodb'
+import send from '../../../services/sendStatus'
 
 const url = envreader.MONGO_URL;
 const default_mongo_db = envreader.DEFAULT_MONGO_DB;
@@ -18,17 +19,17 @@ export default (req, res) => {
                 if (result && !err){
                     bcrypt.compare(password, result.body.password, function(err, same) {
                         if (same) {
-                            res.status(200).send({'message': 'authenticated!'})
+                            send(res, 200, {'message': 'authenticated'})
                         } else {
-                            res.status(400).send({'message': 'wrong password!'})
+                            send(res, 400, {'message': 'wrong password!'})
                         }
                     });
                 } else {
-                    res.status(400).send({'message': 'user not found!'})
+                    send(res, 400, {'message': 'user not found!'})
                 }
             })
         });
     } else {
-        res.status(400).send({ 'error': 'no body found' })
+        send(res, 400, { 'error': 'no body found' })
     }
 }

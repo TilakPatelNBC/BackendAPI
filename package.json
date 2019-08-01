@@ -2,7 +2,7 @@
   "name": "create-next-app-cli",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "api/default.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
