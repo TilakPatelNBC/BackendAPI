@@ -13,15 +13,19 @@ export default (req, res) => {
         client.connect(function (err, x) {
             const db = client.db(default_mongo_db);
             const password = req.body.password
-            delete req.body.password
             db.collection(collection).findOne(req.body, function (err, result) {
-                bcrypt.compare(password, result.password, function(err, same) {
-                    if (same) {
-                        res.status(200).send({'message': 'authenticated!'})
-                    } else {
-                        res.status(400).send({'message': 'wrong password!'})
-                    }
-                });
+                console.log(result)
+                if (result && !err){
+                    bcrypt.compare(password, result.body.password, function(err, same) {
+                        if (same) {
+                            res.status(200).send({'message': 'authenticated!'})
+                        } else {
+                            res.status(400).send({'message': 'wrong password!'})
+                        }
+                    });
+                } else {
+                    res.status(400).send({'message': 'user not found!'})
+                }
             })
         });
     } else {
