@@ -13,7 +13,7 @@ export default (req, res) => {
         client.connect(function (err, x) {
             const db = client.db(default_mongo_db);
             db.collection(collection).findOne(req.body, function (err, result) {
-                if (err) {
+                if (err || !result) {
                     send(res, 400, {'error': 'not found'})
                 } else {
                     delete result.password
