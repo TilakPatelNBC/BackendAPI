@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p $PORT"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +23,8 @@
     "react-bootstrap": "^1.0.0-beta.10",
     "react-dom": "^16.8.6",
     "styled-jsx": "^3.2.1"
+  },
+  "devDependencies": {
+    "webpack-node-externals": "^1.7.2"
   }
 }
