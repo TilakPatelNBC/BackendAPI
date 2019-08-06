@@ -1,0 +1,19 @@
+{
+    "articles": [
+        {
+            "title": "This a title 1",
+            "headline": "Some preview text caused outrage",
+            "text": "Short article 1"
+        },
+        {
+            "title": "This a title 2",
+            "headline": "Some preview text caused happiness",
+            "text": "Short article 2"
+        },
+        {
+            "title": "This a title 3",
+            "headline": "Some preview text caused sadness",
+            "text": "Short article 3"
+        }
+    ]
+}
