@@ -1,9 +1,8 @@
 import { MongoClient } from 'mongodb'
-import envreader from '../envReader'
 import bcrypt from 'bcrypt'
 
-const url = envreader.MONGO_URL;
-const default_mongo_db = envreader.DEFAULT_MONGO_DB;
+const url = 'mongodb+srv://tilak:Basketball23@cluster0-zp1hi.mongodb.net/test';
+const default_mongo_db = 'main'
 const client = new MongoClient(url)
 
 export const insert = (collection, query) => {

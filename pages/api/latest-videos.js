@@ -1,15 +1,14 @@
 import axios from 'axios'
-import envreader from '../../services/envReader'
 
 export default (req, res) => {
     res.setHeader('Content-Type', 'application/json')
-    const api_endpoint = envreader.YOUTUBE_API_ENDPOINT
-    const api_key = envreader.YOUTUBE_API_KEY
-    const max_results = envreader.max_results
+    const api_endpoint = 'https://www.googleapis.com/youtube/v3/search'
+    const api_key = 'AIzaSyDLgcYIKMiMVM2HM3liPbzrJyJTnVUq1oY'
+    const max_results = 10
     axios.get(api_endpoint, {
         params: {
             part: 'snippet',
-            channelId: envreader.CNBC_YOUTUBE_CHANNEL_ID,
+            channelId: 'UCvJJ_dzjViJCoLf5uKUTwoA',
             maxResults: max_results || 10,
             order: 'date',
             key: api_key

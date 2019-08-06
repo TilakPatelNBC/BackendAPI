@@ -1,12 +1,11 @@
 import bcrypt from 'bcrypt'
-import envreader from '../../../services/envReader'
 import {MongoClient} from 'mongodb'
 import send from '../../../services/sendStatus'
 
-const url = envreader.MONGO_URL;
-const default_mongo_db = envreader.DEFAULT_MONGO_DB;
+const url = 'mongodb+srv://tilak:Basketball23@cluster0-zp1hi.mongodb.net/test';
+const default_mongo_db = 'main'
 const client = new MongoClient(url)
-const collection = 'Users'
+const collection = 'users'
 
 export default (req, res) => {
     res.setHeader('Content-Type', 'application/json')

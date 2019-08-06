@@ -1,9 +1,8 @@
 import axios from 'axios';
-import envreader from '../../services/envReader'
 
 export default (req, res) => {
     res.setHeader('Content-Type', 'application/graphql')
-    const api_endpoint = envreader.GRAPHQL_ENDPOINT
+    const api_endpoint = 'https://qa-aws01webql.cnbc.com/graphql'
     axios({
         method: 'post',
         url: api_endpoint,
