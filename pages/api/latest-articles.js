@@ -11,7 +11,23 @@ export default (req, res) => {
     }
   })
     .then((response) => {
-      res.status(response.status).json(response.data.data.page.layout[2].columns[0].modules[0]);
+      let data = response.data.data.page.layout[2].columns[0].modules[0]
+      let new_art = {
+        "author": [{
+          "name": "Emmie Martin"
+        }],
+        "description": "Millennials agree on the best way to invest—but they’re wrong",
+        "title": "Millennials agree on the best way to invest—but they’re wrong",
+        "headline": "Millennials agree on the best way to invest—but they’re wrong",
+        "shorterDescription": "Millennials agree on the best way to invest—but they’re wrong",
+        "url": "https://www.cnbc.com/2019/07/18/millennials-say-real-estate-is-the-best-long-term-investment.html",
+        "promoImage": {
+          "url": "https://image.cnbcfm.com/api/v1/image/106016734-1562954147660gettyimages-1023293340.jpeg?v=1562954173&w=1400&h=950"
+        }
+      }
+
+      data.data.assets.unshift(new_art)
+      res.status(response.status).json(data);
     })
     .catch((error) => {
       if (error.response) {
@@ -35,6 +51,9 @@ const data_string = `
          data {
             ...on twoColumnImageDense {
     assets {
+      author{
+        name
+      }
       description
       title
       headline
